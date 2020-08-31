@@ -1,9 +1,11 @@
 version: '3.4'
 services:
-  api_one:
+  stan_model_container:
     image: jrnold/rstan
-    command: Rscript /app/stan_model.R
+    command: Rscript /app/main.R
     working_dir: /app
     volumes:
-      - ./:/app
+      - ./my_model.stan:/app/my_model.stan
+      - ./main.R:/app/main.R
+      - ./fit.rda:/app/fit.rda
 
